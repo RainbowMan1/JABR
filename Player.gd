@@ -27,10 +27,12 @@ func _physics_process(delta):
 func get_input(delta):
 	if(block_cooldown <= 0):
 		if(Input.get_action_strength("block")):
+			print_debug("Block")
 			setTimer(block,1)
 			block = false
 			block_cooldown = 5
 		if(Input.get_action_strength("dodge")):
+			print_debug("Dodge")
 			setTimer(dodge,4)
 			dodge = false
 			block_cooldown = 5
