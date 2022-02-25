@@ -16,9 +16,7 @@ func _ready():
 
 
 func _on_Play_Button_pressed():
-	# TODO: Replace following with the first scene
-	# Game.goto_scene_fade();
-	pass
+	get_tree().change_scene('res://Arena.tscn')
 
 func _on_Quit_Button_pressed():
 	get_tree().quit()
