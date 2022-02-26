@@ -5,17 +5,23 @@ onready var fsm = $StateMachine
 var title = "State 1"
 var time = OS.get_ticks_msec()+100
 
-
+var count = 0
 func enter():
 	print("Hello from State 1!")
 	#gameState.instance()
 	#self.get_child(0).modulate.a = 1
 	# Exit 2 seconds later
 	#print_tree()
-	#yield(get_tree().create_timer(5.0), "timeout")
-	#exit(1)
+	if get_owner() != null:
+		yield(fsm.get_tree().create_timer(5.0), "timeout")
+	pass
+	if count != 1:
+		exit(1)
+		
+	pass
 
 func exit(next_state):
+	count += 1
 	print_debug("exiting state 1")
 	#self.get_child(0).modulate.a = 0
 	fsm.change_to(next_state)

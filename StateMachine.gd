@@ -5,47 +5,51 @@ extends Node
 const DEBUG = true
 
 var state: Object
-var stateOne = preload("res://States/State1.tscn")
-var stateTwo = preload("res://States/State2.tscn")
+var stateOne = preload("res://States/State1.tscn").instance()
+var stateTwo = preload("res://States/State2.tscn").instance()
 var gameStates = []
 var history = []
 var stateNum = 0
+
+var curNode: Object
 func _ready():
 	print_debug("Getting machine ready")
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
-	gameStates.append(stateOne.instance())
+	gameStates.append(stateOne)
 	gameStates.append(stateTwo)
+	curNode = gameStates[0]
 	#state = gameStates[0]
 	# Allow for all nodes to be ready before calling _enter_state
-	call_deferred("_enter_state", stateNum)
+	call_deferred("_enter_state")
 
 
 func change_to(Num):
 	
-	history.append(gameStates[Num].name)
-	print_debug("Changing scene to: " + gameStates[Num].title)
+	history.append(curNode)
+	curNode = gameStates[Num]
+	print_debug("Changing scene to: " + curNode.name)
 	
 	
-	_enter_state(Num)
+	_enter_state()
 
 
-func back(Num):
-	print_debug("Returning to previous state: " + gameStates[Num].name)
+func back():
+	print_debug("Returning to previous state: " + curNode.name)
 	if history.size() > 0:
-		gameStates[Num] = get_node(history.pop_back())
-		_enter_state(Num)
+		curNode = history.pop_back()
+		_enter_state()
 
 
-func _enter_state(Num):
-	#stateOne.instance()
+func _enter_state():
+	
 	if DEBUG:
-		print("Entering state: ", gameStates[Num].name)
+		print("Entering state: ", curNode.name)
 	# Give the new state a reference to it's state machine i.e. this one
-	gameStates[Num].fsm = self
-	gameStates[Num].get_child(0).rect_global_position = Vector2(0,0)
-	gameStates[Num].enter()
-	get_tree().change_scene("res://States/"+ gameStates[Num].name +".tscn")
+	curNode.fsm = self
+	curNode.get_child(0).rect_global_position = Vector2(0,0)
+	curNode.enter()
+	get_tree().change_scene("res://States/"+ curNode.name +".tscn")
 
 
 ## Route Game Loop function calls to

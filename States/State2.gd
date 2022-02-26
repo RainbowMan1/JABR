@@ -1,6 +1,6 @@
 extends Node
 
-onready var fsm = get_node("/root/StateMachine")
+onready var fsm = $StateMachine
 
 
 	
