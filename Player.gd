@@ -56,8 +56,7 @@ func shoot():
 	b.damage = damage
 	get_parent().add_child(b)
 	b.direction = (get_global_mouse_position() - position).normalized()
-	b.transform = $ProjectileLauncher.global_transform #shoots the projectile from the position of MageHand
-	print("bullet launched")
+	b.transform = $ProjectileLauncher.global_transform #shoots the projectile from the position of Projectile Launcher
 
 func setTimer(spawn_func, spawn_time) -> Timer:
 	#creates a timer based on the function given in the first parameter and time given in second parameter
