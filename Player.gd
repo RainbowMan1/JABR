@@ -8,9 +8,8 @@ var speed = 100
 var block = false
 var dodge = false
 var block_cooldown = 5
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+var bullet = preload("res://Bullet.tscn")
 
 
 func _physics_process(delta):#physics process of every second
@@ -25,27 +24,39 @@ func _physics_process(delta):#physics process of every second
 	
 	var movement = speed * direction * delta
 	move_and_collide(movement)
-		
-func get_input(delta):#gets the input every second
 	if(block_cooldown <= 0):
 		if(Input.get_action_strength("block")):
-			print("Block")
-			setTimer(block,1)
-			block = false
-			block_cooldown = 5
+			block()
 		if(Input.get_action_strength("dodge")):
-			print("Dodge")
-			setTimer(dodge,4)
-			dodge = false
-			block_cooldown = 5
+			dodge()
 	else:
 		block_cooldown -= delta
+	if(Input.get_action_strength("shoot")):
+		shoot()
 
-func block():#sets block to true
-	block = true
+func block():#has the player block
+	if(block_cooldown):
+		print("Block")
+		block = true
+		block_cooldown = 5
+	else:
+		block = false
 
-func dodge():#sets dodge to true
-	dodge = true#need to make it so that moves in the direction of previously pressed keys
+func dodge():#has the player dodge
+	if(block_cooldown):
+		print("Dodge")
+		dodge = true
+		block_cooldown = 5
+	else:
+		dodge = false
+
+func shoot():
+	var b = bullet.instance()
+	b.Player = self
+	b.damage = damage
+	get_parent().add_child(b)
+	b.direction = (get_global_mouse_position() - position).normalized()
+	b.transform = $ProjectileLauncher.global_transform #shoots the projectile from the position of Projectile Launcher
 
 func setTimer(spawn_func, spawn_time) -> Timer:
 	#creates a timer based on the function given in the first parameter and time given in second parameter
