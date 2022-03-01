@@ -1,6 +1,7 @@
-extends Control
+extends Node2D
 
 var fsm: WeakRef
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -8,15 +9,13 @@ var fsm: WeakRef
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"Button Container/Play Button".grab_focus()
+	pass # Replace with function body.
+
+
+func updateGameState():
+	fsm.get_ref().updateGameState()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Play_Button_pressed():
-	fsm.get_ref().next()
-
-func _on_Quit_Button_pressed():
-	get_tree().quit()

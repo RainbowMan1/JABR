@@ -9,6 +9,7 @@ var max_health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.get_parent().updateGameState()
 	print("Boss starts with ", health, " health")
 
 func _physics_process(delta):

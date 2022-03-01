@@ -4,9 +4,8 @@ extends Node
 #source: https://gdscript.com/solutions/godot-state-machine/
 const DEBUG = true
 
-var state: Object
-var stateOne = preload("res://States/State1.tscn").instance()
-var stateTwo = preload("res://States/State2.tscn").instance()
+var mainMenu = preload("res://MainMenu/mainMenu.tscn").instance()
+var levelOne = preload("res://Arena.tscn").instance()
 var gameStates = []
 var history = []
 var stateNum = 0
@@ -16,8 +15,8 @@ func _ready():
 	print_debug("Getting machine ready")
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
-	gameStates.append(stateOne)
-	gameStates.append(stateTwo)
+	gameStates.append(mainMenu)
+	gameStates.append(levelOne)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	# Allow for all nodes to be ready before calling _enter_state
@@ -29,28 +28,34 @@ func change_to(Num):
 	history.append(curNode)
 	curNode = gameStates[Num]
 	print_debug("Changing scene to: " + curNode.name)
-	
-	
 	_enter_state()
 
 
 func back():
 	print_debug("Returning to previous state: " + curNode.name)
+	get_tree().get_root().remove_child(curNode)
+	stateNum-=1
 	if history.size() > 0:
 		curNode = history.pop_back()
 		_enter_state()
+		
+func next():
+	print_debug("Returning to next state: " + curNode.name)
+	get_tree().get_root().remove_child(curNode)
+	stateNum +=1
+	change_to(stateNum)
 
 
 func _enter_state():
 	
 	if DEBUG:
-		print("Entering state: ", curNode.name)
+		print_debug("Entering state: ", curNode.name)
 	# Give the new state a reference to it's state machine i.e. this one
-	curNode.fsm = self
-	curNode.get_child(0).rect_global_position = Vector2(0,0)
-	curNode.enter()
-	get_tree().change_scene("res://States/"+ curNode.name +".tscn")
+	curNode.fsm = weakref(self)
+	get_tree().get_root().add_child(curNode)
 
+func updateGameState():
+	print_debug("Game state will be updated from a different place")
 
 ## Route Game Loop function calls to
 ## current state handler method if it exists
