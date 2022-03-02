@@ -61,5 +61,5 @@ func _on_PlayerHurtBox_area_entered(area):
 		health -= 0
 	else:
 		health -= 25
-
+	
 

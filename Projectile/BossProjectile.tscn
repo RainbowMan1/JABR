@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="BossProjectile" type="Area2D"]
+
+[node name="HitBox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.321569, 0.415686, 0.513726, 1 )
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
