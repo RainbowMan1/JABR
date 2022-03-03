@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/intro-01-chiptune-c64-6581.mp3-0b9c302a318e3cbb723499de0a8ccb05.mp3str"
+
+[deps]
+
+source_file="res://Music/intro-01-chiptune-c64-6581.mp3"
+dest_files=[ "res://.import/intro-01-chiptune-c64-6581.mp3-0b9c302a318e3cbb723499de0a8ccb05.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
