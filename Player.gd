@@ -5,7 +5,7 @@ const max_health = 100
 const COOLDOWN_WAIT_TIME = .2
 
 var health = 100
-var damage = 100
+var damage = 10
 var speed = 100
 
 var block = false
