@@ -6,8 +6,8 @@ var time_multi = 1.0
 var paused = false
 onready var clockText = get_node("ClockText")
 onready var scoreText = get_node("Score")
-#var bossHealth = self.get_child(2).health
 onready var playerHealth = get_node("PlayerBase").health
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -32,9 +32,17 @@ func _process(delta):
 	if not paused:
 		clockText.text = "Time: " + str(int(clock)) + "sec" 
 	#print_debug("boss health" + str(bossHealth))
-	if self.get_child(2).health == 0:
-		scoreText.text = "Score: " + str(playerHealth/clock)
-		paused = true
+	#print(self.get_child(2))
+	
+		
 		
 	
 	pass
+
+
+func _on_Boss_tree_exiting():
+	print_debug("Boss Defeated")
+		
+	scoreText.text = "Score: " + str(playerHealth/clock)
+	paused = true
+	pass # Replace with function body.
