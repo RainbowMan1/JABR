@@ -26,7 +26,8 @@ func die():
 
 
 func _on_Area2D_area_entered(area):
-  health -= area.damage
+	if(area.name == "Bullet"):
+		health -= area.damage
 	print("Boss has ", health, " health")
 
 func shoot():
