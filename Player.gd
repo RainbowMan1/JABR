@@ -1,13 +1,17 @@
 extends KinematicBody2D
 
+
+const max_health = 100
+const COOLDOWN_WAIT_TIME = .2
+
 var health = 100
-var max_health = 100
 var damage = 100
 var speed = 100
 
 var block = false
 var dodge = false
 var block_cooldown = 5
+var atk_cooldown = 0
 
 var bullet = preload("res://Bullet.tscn")
 
@@ -32,7 +36,11 @@ func _physics_process(delta):#physics process of every second
 	else:
 		block_cooldown -= delta
 	if(Input.get_action_strength("shoot")):
-		shoot()
+		if(atk_cooldown <= 0):
+			shoot()
+			atk_cooldown = COOLDOWN_WAIT_TIME
+		else:
+			atk_cooldown -= delta
 
 func block():#has the player block
 	if(block_cooldown):
