@@ -79,6 +79,6 @@ func _on_PlayerHurtBox_area_entered(area):
 	if block or dodge:
 		health -= 0
 	else:
-		health -= 25
+		health -= area.damage
 
 

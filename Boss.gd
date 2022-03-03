@@ -22,5 +22,5 @@ func die():
 
 
 func _on_Area2D_area_entered(area):
-	health -= 5
+	health -= area.damage
 	print("Boss has ", health, " health")
