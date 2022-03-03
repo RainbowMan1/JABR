@@ -67,9 +67,9 @@ func calcScore():
 	return playerHealth/levelTime
 ## Route Game Loop function calls to
 ## current state handler method if it exists
-#func _process(delta):
-#	if state.has_method("process"):
-#		state.process(delta)
+func _process(delta):
+	if $"BackgroundMusic".playing == false:
+		$"BackgroundMusic".play()
 #
 #
 #func _physics_process(delta):
