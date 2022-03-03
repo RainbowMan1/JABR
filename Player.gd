@@ -81,4 +81,3 @@ func _on_PlayerHurtBox_area_entered(area):
 	else:
 		health -= area.damage
 
-

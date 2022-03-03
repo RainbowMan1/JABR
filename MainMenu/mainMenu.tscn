@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MainMenu/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Font/EvilEmpire.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Font/zerovelo.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Font/FunZone.tres" type="DynamicFont" id=4]
 
 [sub_resource type="Theme" id=3]
-Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -17,59 +19,78 @@ Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=6]
+RichTextLabel/fonts/normal_font = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="Theme" id=5]
+RichTextLabel/constants/shadow_as_outline = 7
+RichTextLabel/fonts/normal_font = ExtResource( 3 )
+RichTextLabel/styles/focus = SubResource( 4 )
 
 [node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 3 )
+script = ExtResource( 1 )
+
+[node name="Button Container" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -514.0
-margin_top = -558.0
-margin_right = 510.0
-margin_bottom = 42.0
-theme = SubResource( 3 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button Container" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.8
-anchor_right = 0.5
-anchor_bottom = 0.8
-margin_left = -48.0
-margin_top = -31.0
-margin_right = 20.0
+margin_left = -35.0
+margin_top = -60.0
+margin_right = 35.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play Button" type="Button" parent="Button Container"]
-margin_right = 100.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 100, 40 )
+margin_right = 70.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 50, 20 )
 text = "Play"
 
 [node name="Quit Button" type="Button" parent="Button Container"]
-margin_top = 44.0
-margin_right = 100.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 100, 40 )
+margin_top = 24.0
+margin_right = 70.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 50, 20 )
 text = "Quit"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Titles" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 56.0
-margin_bottom = 20.0
-theme = SubResource( 2 )
+margin_left = -77.0
+margin_top = -73.0
+margin_right = 77.0
+margin_bottom = 7.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="Titles"]
+margin_top = 8.0
+margin_right = 154.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 100, 44 )
+rect_pivot_offset = Vector2( -2, -13 )
+theme = SubResource( 6 )
 text = "JABR"
+
+[node name="Subtitle" type="RichTextLabel" parent="Titles"]
+margin_top = 56.0
+margin_right = 154.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 40, 15 )
+rect_pivot_offset = Vector2( -2, -13 )
+theme = SubResource( 5 )
+text = "Just Another Boss Rush"
 __meta__ = {
 "_edit_use_anchors_": false
 }
