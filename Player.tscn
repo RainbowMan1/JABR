@@ -31,4 +31,7 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource( 2 )
 
+[node name="ProjectileLauncher" type="Position2D" parent="."]
+position = Vector2( 20, 0 )
+
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]

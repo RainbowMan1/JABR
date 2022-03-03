@@ -23,7 +23,7 @@ position = Vector2( 140, 83 )
 position = Vector2( 104, 53 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_top = 89.0
-margin_right = 40.0
-margin_bottom = 129.0
+[node name="ClockText" type="Label" parent="."]
+margin_left = 139.0
+margin_right = 205.0
+margin_bottom = 22.0

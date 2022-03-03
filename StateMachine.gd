@@ -9,7 +9,8 @@ var levelOne = preload("res://Arena.tscn").instance()
 var gameStates = []
 var history = []
 var stateNum = 0
-
+var playerHealth =  0
+var levelTime = 0
 var curNode: Object
 func _ready():
 	print_debug("Getting machine ready")
@@ -57,6 +58,13 @@ func _enter_state():
 func updateGameState():
 	print_debug("Game state will be updated from a different place")
 
+
+func scoreData(time, health): 
+	playerHealth = health
+	levelTime = time
+	
+func calcScore():
+	return playerHealth/levelTime
 ## Route Game Loop function calls to
 ## current state handler method if it exists
 #func _process(delta):
