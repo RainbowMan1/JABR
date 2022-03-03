@@ -8,18 +8,20 @@ var health = 100
 var max_health = 100
 var target = null
 var projectile = preload("res://Projectile/Projectile.tscn")
+onready var shootTimer = get_node("Shoot_Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.get_parent().updateGameState()
 	print("Boss starts with ", health, " health")
-
+	shootTimer.set_wait_time(2)
+	shootTimer.start()
 
 func _physics_process(delta):
 	#test code the boss should take damage when the space button is pressed
 	if health == 0:
 		die()
-	if Input.is_action_just_pressed("ui_select"):
-		shoot()
+	#if Input.is_action_just_pressed("ui_select"):
+		#hoot()
 
 func take_damage(damage):
 	if (health - damage) <= 0:
@@ -40,10 +42,13 @@ func shoot():
 	if (target != null):
 		var target_direction_x = target.position.x-position.x
 		var target_direction_y = target.position.y-position.y
-		print(target.position.x, ", ", target.position.y)
+		#print(target.position.x, ", ", target.position.y)
 		proj.direction = target.position - position
 	add_child(proj)
 
 func _on_PlayerDetection_body_entered(body):
 	if (body.name == "PlayerBase"):
 		target = body
+
+func _on_Shoot_Timer_timeout():
+	shoot() # Replace with function body.

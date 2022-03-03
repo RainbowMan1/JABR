@@ -30,9 +30,6 @@ margin_right = 510.0
 margin_bottom = 42.0
 theme = SubResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button Container" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -70,9 +67,6 @@ margin_right = 56.0
 margin_bottom = 20.0
 theme = SubResource( 2 )
 text = "JABR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="Button Container/Play Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="Button Container/Quit Button" to="." method="_on_Quit_Button_pressed"]
