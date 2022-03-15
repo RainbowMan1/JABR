@@ -63,6 +63,7 @@ func shoot():
 	b.Player = self
 	b.damage = damage
 	get_parent().add_child(b)
+	print(b.name)
 	b.direction = (get_global_mouse_position() - position).normalized()
 	b.transform = $ProjectileLauncher.global_transform #shoots the projectile from the position of Projectile Launcher
 

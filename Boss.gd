@@ -26,9 +26,10 @@ func die():
 
 
 func _on_Area2D_area_entered(area):
-	if(area.name == "Bullet"):
+	#print(get_tree().get_nodes_in_group("player_attack"))
+	if(area.is_in_group("player_attack")):
 		health -= area.damage
-	print("Boss has ", health, " health")
+		print("Boss has ", health, " health")
 
 func shoot():
 	var proj = projectile.instance()
