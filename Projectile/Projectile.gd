@@ -11,7 +11,7 @@ var damage: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = 50
-	damage = 1
+	damage = 10
 
 func _physics_process(delta):
 	translate(direction.normalized() * speed * delta)

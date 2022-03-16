@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 const max_health = 100
-const COOLDOWN_WAIT_TIME = .2
+const COOLDOWN_WAIT_TIME = .5
 
 var health = 100
 var damage = 10
@@ -82,4 +82,6 @@ func _on_PlayerHurtBox_area_entered(area):
 	else:
 		if(area.name == "Projectile"):
 			health -= area.damage
+			$HealthBar.value = health
+			print("Player has", health)
 
