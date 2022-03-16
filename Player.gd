@@ -83,5 +83,4 @@ func _on_PlayerHurtBox_area_entered(area):
 		if(area.name == "Projectile"):
 			health -= area.damage
 			$HealthBar.value = health
-			print("Player has", health)
 
