@@ -6,6 +6,8 @@ const DEBUG = true
 
 var mainMenu = preload("res://MainMenu/mainMenu.tscn").instance()
 var levelOne = preload("res://Arena.tscn").instance()
+var levelTwo = preload("res://LevelTwo/LevelTwo.tscn").instance()
+var levelThree = preload("res://LevelThree/LevelThree.tscn").instance()
 var gameStates = []
 var history = []
 var stateNum = 0
