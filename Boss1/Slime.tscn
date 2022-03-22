@@ -4,7 +4,7 @@
 [ext_resource path="res://Boss1/Slime_JABR.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 15.0084, 14.9916 )
+extents = Vector2( 17, 15.9911 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
@@ -22,15 +22,13 @@ color = Color( 0.67451, 0.313726, 0.313726, 1 )
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Boss_Hurtbox"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
+position = Vector2( 0.00949857, 0.999441 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 2 )
 
 [node name="PlayerDetection" type="Area2D" parent="." groups=["Boss_Hurtbox"]]

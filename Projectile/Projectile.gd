@@ -22,5 +22,5 @@ func set_direction(x_new, y_new):
 
 
 func _on_Projectile_area_entered(area):
-	if(area.get_parent().name != "Boss"):
+	if(!area.is_in_group("Boss_Hurtbox")):
 		queue_free()

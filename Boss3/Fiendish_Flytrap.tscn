@@ -13,7 +13,6 @@ visible = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0.0108975, 9.49553 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="5"]
