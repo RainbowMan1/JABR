@@ -11,7 +11,8 @@ var projectile = preload("res://Projectile/Projectile.tscn")
 onready var shootTimer = get_node("Shoot_Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.get_parent().updateGameState()
+	if get_parent().name == "Arena":
+		self.get_parent().updateGameState()
 	print("Boss starts with ", health, " health")
 	shootTimer.set_wait_time(2)
 	shootTimer.start()

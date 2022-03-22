@@ -3,7 +3,7 @@
 [ext_resource path="res://Boss.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 16.0089, 15.9911 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
@@ -20,9 +20,9 @@ color = Color( 0.67451, 0.313726, 0.313726, 1 )
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" groups=["Boss_Hurtbox"]]
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]

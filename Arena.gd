@@ -42,7 +42,16 @@ func _process(delta):
 
 func _on_Boss_tree_exiting():
 	print_debug("Boss Defeated")
-		
 	scoreText.text = "Score: " + str(playerHealth/clock)
 	paused = true
+	pass # Replace with function body.
+
+
+func _on_Boss2_tree_exiting():
+	print_debug("Boss Defeated")
+	scoreText.text = "Score: " + str(playerHealth/clock)
+	paused = true
+	print("Before FSM reference")
+	fsm.get_ref().next()
+	print("After FSM reference")
 	pass # Replace with function body.
