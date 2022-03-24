@@ -20,6 +20,8 @@ func _ready():
 	set_process(true)
 	pass # Replace with function body.
 
+func updateBossHealth(val):
+	$BossHealthBar.value = val
 
 func updateGameState():
 	fsm.get_ref().updateGameState()
