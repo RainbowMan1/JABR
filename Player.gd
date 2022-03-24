@@ -17,6 +17,8 @@ var bullet = preload("res://Bullet.tscn")
 
 
 func _physics_process(delta):#physics process of every second
+	if health <= 0:
+		die()
 	var direction: Vector2
 	#$PlayerArrowRectangle.rotation += $PlayerArrowRectangle.position.angle_to_point(get_local_mouse_position())
 	if(!block):
@@ -80,7 +82,9 @@ func _on_PlayerHurtBox_area_entered(area):
 	if block or dodge:
 		health -= 0
 	else:
-		if(area.name == "Projectile"):
+		if(area.is_in_group("boss_attack")):
 			health -= area.damage
 			$HealthBar.value = health
 
+func die():
+	queue_free()

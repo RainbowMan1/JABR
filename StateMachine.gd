@@ -20,6 +20,7 @@ func _ready():
 	# Set the initial state to the first child node
 	gameStates.append(mainMenu)
 	gameStates.append(levelOne)
+	gameStates.append(levelTwo)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	# Allow for all nodes to be ready before calling _enter_state

@@ -33,13 +33,13 @@ func _on_Area2D_area_entered(area):
 		print("Boss has ", health, " health")
 
 func shoot():
-	var proj = projectile.instance()
 	if (target != null):
+		var proj = projectile.instance()
 		var target_direction_x = target.position.x-position.x
 		var target_direction_y = target.position.y-position.y
 		#print(target.position.x, ", ", target.position.y)
 		proj.direction = target.position - position
-	add_child(proj)
+		add_child(proj)
 
 func _on_PlayerDetection_body_entered(body):
 	if (body.name == "PlayerBase"):
@@ -47,3 +47,7 @@ func _on_PlayerDetection_body_entered(body):
 
 func _on_Shoot_Timer_timeout():
 	shoot() # Replace with function body.
+
+
+func _on_PlayerBase_tree_exiting():
+	target = null # Replace with function body.
