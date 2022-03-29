@@ -17,4 +17,3 @@ position = Vector2( 151, 20 )
 [node name="PlayerBase" parent="." instance=ExtResource( 2 )]
 position = Vector2( 157, 151 )
 rotation = 0.000558714
-scale = Vector2( 1, 1 )
