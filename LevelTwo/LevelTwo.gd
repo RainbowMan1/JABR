@@ -15,3 +15,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func updateBossHealth(val):
+	$BossHealthBar.value = val
+
+
+func _on_Boss_tree_exited():
+	fsm.get_ref().next()

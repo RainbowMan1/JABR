@@ -57,15 +57,12 @@ script = ExtResource( 4 )
 
 [node name="Barrier" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -85.9151, 101.012 )
-scale = Vector2( 1, 1 )
 
 [node name="Barrier2" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -145.915, 101.079 )
-scale = Vector2( 1, 1 )
 
 [node name="Barrier3" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -208.915, 101.15 )
-scale = Vector2( 1, 1 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]

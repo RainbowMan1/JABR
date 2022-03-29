@@ -21,6 +21,7 @@ func _ready():
 	gameStates.append(mainMenu)
 	gameStates.append(levelOne)
 	gameStates.append(levelTwo)
+	gameStates.append(levelThree)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	# Allow for all nodes to be ready before calling _enter_state

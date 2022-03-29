@@ -31,7 +31,8 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("player_attack")):
 		health -= area.damage
 		print("Boss has ", health, " health")
-	#selfs.get_parent().updateBossHealth(health)
+		self.get_parent().updateBossHealth(health)
+	
 func shoot():
 	if (target != null):
 		var proj = projectile.instance()
