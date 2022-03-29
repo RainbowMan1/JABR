@@ -12,7 +12,7 @@ func _process(delta):#moves in a position every second
 	
 
 func _on_Bullet_area_entered(area):#what happens when the bullet enters an area
-	if(area.name == "HurtBox"):
+	if(area.name == "HurtBox" || area.is_in_group("Barrier")):
 		queue_free()
 
 

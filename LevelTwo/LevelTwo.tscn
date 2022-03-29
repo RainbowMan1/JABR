@@ -17,3 +17,10 @@ position = Vector2( 151, 20 )
 [node name="PlayerBase" parent="." instance=ExtResource( 2 )]
 position = Vector2( 157, 151 )
 rotation = 0.000558714
+
+[node name="Label" type="Label" parent="."]
+margin_left = 83.0
+margin_top = 14.0
+margin_right = 217.0
+margin_bottom = 28.0
+text = "DESTROY THE GATE!!!"

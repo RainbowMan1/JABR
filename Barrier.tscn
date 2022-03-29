@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="HurtBox" type="Area2D" groups=["HurtBox"]]
+[node name="HurtBox" type="Area2D" groups=["Barrier", "HurtBox"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )

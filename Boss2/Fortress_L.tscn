@@ -4,7 +4,7 @@
 [ext_resource path="res://Boss.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 64, 73.9994 )
+extents = Vector2( 65.0204, 73.4813 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 63.0014, 71.0005 )
@@ -14,6 +14,7 @@ radius = 289.0
 
 [node name="Boss" type="KinematicBody2D"]
 rotation = 0.000558714
+z_index = 2
 script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -23,12 +24,12 @@ polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 [node name="HurtBox" type="Area2D" parent="." groups=["Boss_Hurtbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2( 0.0402313, 68.9994 )
+position = Vector2( -29.9824, -5.50082 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -0.997498, 15.9966 )
-scale = Vector2( 1, 1 )
+position = Vector2( -30.0034, -5.98324 )
 shape = SubResource( 2 )
 
 [node name="PlayerDetection" type="Area2D" parent="." groups=["Boss_Hurtbox"]]
@@ -41,6 +42,7 @@ shape = SubResource( 3 )
 autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -29.0402, -71.9838 )
 texture = ExtResource( 1 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Area2D_area_entered"]
