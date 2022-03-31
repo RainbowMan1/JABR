@@ -6,7 +6,7 @@ extends KinematicBody2D
 var health = 100
 var max_health = 100
 var target = null
-var projectile = preload("res://Projectile/Projectile.tscn")
+var projectile = preload("res://Projectile/PoisonProjectile.tscn")
 onready var shootTimer = get_node("Shoot_Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 	print("Boss starts with ", health, " health")
 	shootTimer.set_wait_time(2)
 	shootTimer.start()
-	setTimer("teleport",2)
+	setTimer("teleport",10)
 
 func _physics_process(delta):
 	

@@ -12,6 +12,7 @@ var block = false
 var dodge = false
 var block_cooldown = 5
 var atk_cooldown = 0
+var poisoned = false
 
 var bullet = preload("res://Bullet.tscn")
 
@@ -43,6 +44,10 @@ func _physics_process(delta):#physics process of every second
 			atk_cooldown = COOLDOWN_WAIT_TIME
 		else:
 			atk_cooldown -= delta
+	if(poisoned):
+		setTimer("poisoned", 2)
+		poisoned = false
+		print("Health is", health)
 
 func block():#has the player block
 	if(block_cooldown):
@@ -85,6 +90,12 @@ func _on_PlayerHurtBox_area_entered(area):
 		if(area.is_in_group("boss_attack")):
 			health -= area.damage
 			$HealthBar.value = health
+		if(area.is_in_group("poison_projectile")):
+			poisoned = true
+			print("poisoned is", poisoned)
+
+func poisoned():
+	health-= 1
 
 func die():
 	queue_free()
