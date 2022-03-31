@@ -28,7 +28,10 @@ func _ready():
 	gameStates.append(scoreScreen)
 	gameStates.append(bossTitle)
 	gameStates.append(levelTwo)
+	gameStates.append(scoreScreen)
+	gameStates.append(bossTitle)
 	gameStates.append(levelThree)
+	gameStates.append(scoreScreen)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	
@@ -60,10 +63,12 @@ func change_to(Num):
 			gameStates[Num].get_node("Label").text = "Plant"
 			print_debug("boss name set to plant")
 		bossNum += 1
+		
 	#Return canvas layer to foreground so it can be seen
 	$TransitionLayer.transition(1)
 	yield(get_tree().create_timer(0.5), "timeout")
 	_enter_state()
+	
 	#$TransitionLayer.set_layer(1)
 
 
@@ -95,6 +100,8 @@ func _enter_state():
 	#$TransitionLayer.set_layer(1)
 	#$TransitionLayer.transition(1)
 	get_tree().get_root().add_child(curNode)
+	if(curNode.name == "TitleScreen"):
+		curNode.endScene()
 	if DEBUG:
 		print_debug("Entered state: ", curNode.name)
 		print_debug("scene set")
