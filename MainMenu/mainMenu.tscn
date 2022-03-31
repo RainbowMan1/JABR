@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MainMenu/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Font/EvilEmpire.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Font/zerovelo.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/mousedown.png" type="Texture" id=3]
 [ext_resource path="res://Font/FunZone.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/WASD.png" type="Texture" id=5]
+[ext_resource path="res://Font/zerovelo2.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Theme" id=3]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
@@ -26,14 +28,18 @@ RichTextLabel/fonts/normal_font = ExtResource( 4 )
 
 [sub_resource type="Theme" id=5]
 RichTextLabel/constants/shadow_as_outline = 7
-RichTextLabel/fonts/normal_font = ExtResource( 3 )
+RichTextLabel/fonts/normal_font = ExtResource( 6 )
 RichTextLabel/styles/focus = SubResource( 4 )
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 302, 38 )
 theme = SubResource( 3 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button Container" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -94,6 +100,42 @@ text = "Just Another Boss Rush"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Wasd" type="Sprite" parent="."]
+position = Vector2( 255, 11 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Movement" type="RichTextLabel" parent="."]
+margin_left = 270.0
+margin_top = 8.0
+margin_right = 329.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 40, 15 )
+rect_pivot_offset = Vector2( -2, -13 )
+theme = SubResource( 5 )
+text = "Movement"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AimnShoot" type="RichTextLabel" parent="."]
+margin_left = 269.0
+margin_top = 31.0
+margin_right = 328.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 40, 15 )
+rect_pivot_offset = Vector2( -2, -13 )
+theme = SubResource( 5 )
+text = "Aim, Shoot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mousedown" type="Sprite" parent="."]
+position = Vector2( 254, 34 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
 
 [connection signal="pressed" from="Button Container/Play Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="Button Container/Quit Button" to="." method="_on_Quit_Button_pressed"]
