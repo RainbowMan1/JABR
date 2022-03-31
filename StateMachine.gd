@@ -28,7 +28,7 @@ func _ready():
 	gameStates.append(scoreScreen)
 	gameStates.append(bossTitle)
 	gameStates.append(levelTwo)
-	
+	gameStates.append(levelThree)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	
