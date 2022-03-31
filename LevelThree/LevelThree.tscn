@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LevelThree/LevelThree.gd" type="Script" id=1]
 [ext_resource path="res://Boss3/Fiendish_Flytrap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PlayerBullet.png" type="Texture" id=4]
 
 [node name="LevelThree" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,4 +12,18 @@ script = ExtResource( 1 )
 position = Vector2( 81, 50 )
 
 [node name="PlayerBase" parent="." instance=ExtResource( 3 )]
-position = Vector2( 175, 78 )
+position = Vector2( 149, 142 )
+rotation = 0.000558714
+
+[node name="BossHealthBar" type="TextureProgress" parent="."]
+margin_left = -2.0
+margin_right = 321.0
+margin_bottom = 6.0
+value = 100.0
+texture_progress = ExtResource( 4 )
+tint_over = Color( 0.121569, 0.729412, 0.0745098, 1 )
+tint_progress = Color( 0.121569, 0.729412, 0.0745098, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
