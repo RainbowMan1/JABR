@@ -51,8 +51,9 @@ func _on_Boss_tree_exiting():
 
 func _on_Boss2_tree_exiting():
 	print_debug("Boss Defeated")
-	scoreText.text = "Score: " + str(playerHealth/clock)
+	#scoreText.text = "Score: " + str(playerHealth/clock)
 	paused = true
+	
 	print("Before FSM reference")
 	print(fsm.get_ref().curNode.name)
 	print("After FSM reference")
@@ -67,4 +68,5 @@ func _on_PlayerBase_tree_exiting():
 
 
 func _on_Boss2_tree_exited():
+	fsm.get_ref().scoreData(clock, playerHealth)
 	fsm.get_ref().next() # Replace with function body.

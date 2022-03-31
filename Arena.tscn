@@ -43,9 +43,6 @@ margin_left = 252.0
 margin_top = 7.0
 margin_right = 318.0
 margin_bottom = 29.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Score" type="Label" parent="."]
 margin_left = 246.0
