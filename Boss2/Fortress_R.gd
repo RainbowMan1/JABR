@@ -1,4 +1,5 @@
-extends Node
+extends "res://Boss.gd"
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,6 +10,11 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
+func _on_Area2D_area_entered(area):
+	#print(get_tree().get_nodes_in_group("player_attack"))
+	if(area.is_in_group("player_attack")):
+		health -= area.damage
+		print("Boss has ", health, " healthR")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

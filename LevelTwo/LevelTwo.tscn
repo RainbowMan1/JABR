@@ -20,6 +20,13 @@ scale = Vector2( 0.75, 0.75 )
 position = Vector2( 157, 151 )
 rotation = 0.000558714
 
+[node name="Label" type="Label" parent="."]
+margin_left = 83.0
+margin_top = 14.0
+margin_right = 217.0
+margin_bottom = 28.0
+text = "DESTROY THE GATE!!!"
+
 [node name="BossHealthBar" type="TextureProgress" parent="."]
 margin_left = -5.0
 margin_top = 178.0

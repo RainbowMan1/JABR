@@ -38,31 +38,61 @@ autostart = true
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
+[node name="Barrier" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -144.983, 30.081 )
+
+[node name="Barrier2" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -145.018, -32.919 )
+
+[node name="Barrier3" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 31.9464, -96.0179 )
+
+[node name="Barrier4" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -32.0536, -95.9821 )
+
+[node name="Barrier5" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( -81.0536, -95.9547 )
+
+[node name="Barrier6" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 144.98, -36.081 )
+
+[node name="Barrier7" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 145.016, 27.919 )
+
+[node name="Barrier8" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 80.9464, -96.0452 )
+
 [node name="FortressL" parent="." instance=ExtResource( 3 )]
-position = Vector2( -150, -50 )
+position = Vector2( -135, 37 )
 script = ExtResource( 4 )
 
 [node name="Barrier" parent="FortressL" instance=ExtResource( 5 )]
-position = Vector2( 92.0134, 36.981 )
+position = Vector2( 39.0453, 22.0318 )
 
 [node name="Barrier2" parent="FortressL" instance=ExtResource( 5 )]
-position = Vector2( 220.013, 36.838 )
+position = Vector2( 167.045, 21.8888 )
 
 [node name="Barrier3" parent="FortressL" instance=ExtResource( 5 )]
-position = Vector2( 156.013, 36.9095 )
+position = Vector2( 103.045, 21.9603 )
+
+[node name="Barrier4" parent="FortressL" instance=ExtResource( 5 )]
+position = Vector2( 230.045, 21.8184 )
 
 [node name="FortressR" parent="." instance=ExtResource( 2 )]
-position = Vector2( 150, -50 )
+position = Vector2( 135, 38 )
 script = ExtResource( 4 )
 
 [node name="Barrier" parent="FortressR" instance=ExtResource( 5 )]
-position = Vector2( -85.9151, 101.012 )
+position = Vector2( -103.953, 42.0408 )
 
 [node name="Barrier2" parent="FortressR" instance=ExtResource( 5 )]
-position = Vector2( -145.915, 101.079 )
+position = Vector2( -167.953, 42.1123 )
 
 [node name="Barrier3" parent="FortressR" instance=ExtResource( 5 )]
-position = Vector2( -208.915, 101.15 )
+position = Vector2( -231.932, 42.276 )
+
+[node name="Barrier4" parent="FortressR" instance=ExtResource( 5 )]
+position = Vector2( -39.953, 41.9693 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
