@@ -32,6 +32,7 @@ func _on_Area2D_area_entered(area):
 		health -= area.damage
 		print("Boss has ", health, " health")
 	self.get_parent().updateBossHealth(health)
+
 func shoot():
 	if (target != null):
 		var proj = projectile.instance()
