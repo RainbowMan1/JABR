@@ -37,6 +37,8 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("player_attack")):
 		health -= area.damage
 		print("Boss has ", health, " health")
+		if(self.get_parent().has_method("updateBossHealth")):
+			self.get_parent().updateBossHealth(health)
 
 func shoot():
 	if (target != null):
@@ -60,6 +62,6 @@ func _on_PlayerBase_tree_exiting():
 func teleport():#teleports the flytrap around the axis of the map e.x. (1,1) -> (-1,1)
 	print(get_viewport().size.x)
 	print(get_viewport().size.y)
-	global_position.x = (randi() % int(get_viewport().size.x))
-	global_position.y = (randi() % int(get_viewport().size.y))
+	global_position.x = (randi() % int(get_viewport().size.x/8))
+	global_position.y = (randi() % int(get_viewport().size.y/8))
 	print("new ", position)

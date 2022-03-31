@@ -15,3 +15,7 @@ func updateBossHealth(val):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Fly_Trap_tree_exited():
+	fsm.get_ref().next()

@@ -24,6 +24,5 @@ texture_progress = ExtResource( 4 )
 tint_over = Color( 0.121569, 0.729412, 0.0745098, 1 )
 tint_progress = Color( 0.121569, 0.729412, 0.0745098, 1 )
 nine_patch_stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[connection signal="tree_exited" from="Fly Trap" to="." method="_on_Fly_Trap_tree_exited"]
