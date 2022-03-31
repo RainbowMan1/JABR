@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LevelTwo/LevelTwo.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Boss2/Fortress.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PlayerBullet.png" type="Texture" id=4]
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,7 +13,8 @@ color = Color( 0.733333, 0.866667, 0.764706, 1 )
 polygon = PoolVector2Array( -8, -7, 325, -6, 324, 184, -6, 183 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 151, 20 )
+position = Vector2( 158, 23 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="PlayerBase" parent="." instance=ExtResource( 2 )]
 position = Vector2( 157, 151 )
@@ -24,3 +26,16 @@ margin_top = 14.0
 margin_right = 217.0
 margin_bottom = 28.0
 text = "DESTROY THE GATE!!!"
+
+[node name="BossHealthBar" type="TextureProgress" parent="."]
+margin_left = -5.0
+margin_top = 178.0
+margin_right = 324.0
+margin_bottom = 184.0
+value = 100.0
+texture_progress = ExtResource( 4 )
+tint_over = Color( 0.121569, 0.729412, 0.0745098, 1 )
+tint_progress = Color( 0.121569, 0.729412, 0.0745098, 1 )
+nine_patch_stretch = true
+
+[connection signal="tree_exited" from="Boss" to="." method="_on_Boss_tree_exited"]

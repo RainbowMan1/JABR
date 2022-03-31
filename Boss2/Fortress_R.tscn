@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Boss2/Fortress.png" type="Texture" id=1]
-[ext_resource path="res://Boss.gd" type="Script" id=2]
+[ext_resource path="res://Boss2/Fortress_R.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 63, 83.9991 )
@@ -17,6 +17,7 @@ rotation = 0.000558714
 script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color( 0.67451, 0.313726, 0.313726, 1 )
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 

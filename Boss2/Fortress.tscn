@@ -45,22 +45,22 @@ position = Vector2( -144.983, 30.081 )
 position = Vector2( -145.018, -32.919 )
 
 [node name="Barrier3" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 53.948, -93.0302 )
+position = Vector2( 31.9464, -96.0179 )
 
 [node name="Barrier4" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -8.05252, -93.9955 )
+position = Vector2( -32.0536, -95.9821 )
 
 [node name="Barrier5" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( -72.0525, -93.9598 )
+position = Vector2( -81.0536, -95.9547 )
 
 [node name="Barrier6" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 143.98, -36.0805 )
+position = Vector2( 144.98, -36.081 )
 
 [node name="Barrier7" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 143.016, 27.9201 )
+position = Vector2( 145.016, 27.919 )
 
 [node name="Barrier8" parent="Sprite" instance=ExtResource( 5 )]
-position = Vector2( 81.948, -93.0458 )
+position = Vector2( 80.9464, -96.0452 )
 
 [node name="FortressL" parent="." instance=ExtResource( 3 )]
 position = Vector2( -135, 37 )
@@ -84,19 +84,15 @@ script = ExtResource( 4 )
 
 [node name="Barrier" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -103.953, 42.0408 )
-scale = Vector2( 1, 1 )
 
 [node name="Barrier2" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -167.953, 42.1123 )
-scale = Vector2( 1, 1 )
 
 [node name="Barrier3" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -231.932, 42.276 )
-scale = Vector2( 1, 1 )
 
 [node name="Barrier4" parent="FortressR" instance=ExtResource( 5 )]
 position = Vector2( -39.953, 41.9693 )
-scale = Vector2( 1, 1 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
