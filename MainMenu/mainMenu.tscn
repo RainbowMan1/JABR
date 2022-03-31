@@ -102,14 +102,14 @@ __meta__ = {
 }
 
 [node name="Wasd" type="Sprite" parent="."]
-position = Vector2( 258, 11 )
+position = Vector2( 255, 11 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="Movement" type="RichTextLabel" parent="."]
-margin_left = 275.0
+margin_left = 270.0
 margin_top = 8.0
-margin_right = 334.0
+margin_right = 329.0
 margin_bottom = 23.0
 rect_min_size = Vector2( 40, 15 )
 rect_pivot_offset = Vector2( -2, -13 )
@@ -119,21 +119,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MovenAim" type="RichTextLabel" parent="."]
-margin_left = 273.0
-margin_top = 32.0
-margin_right = 332.0
+[node name="AimnShoot" type="RichTextLabel" parent="."]
+margin_left = 269.0
+margin_top = 31.0
+margin_right = 328.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 40, 15 )
 rect_pivot_offset = Vector2( -2, -13 )
 theme = SubResource( 5 )
-text = "Move, Aim"
+text = "Aim, Shoot"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Mousedown" type="Sprite" parent="."]
-position = Vector2( 256, 34 )
+position = Vector2( 254, 34 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
