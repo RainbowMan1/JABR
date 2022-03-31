@@ -24,7 +24,6 @@ shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.00391006, 1.00447 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="PlayerDetection" type="Area2D" parent="." groups=["Boss_Hurtbox"]]

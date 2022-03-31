@@ -13,9 +13,13 @@ script = ExtResource( 3 )
 [node name="Polygon2D" parent="." index="0"]
 visible = false
 
+[node name="HurtBox" parent="." index="1" groups=["Boss_Hurtbox"]]
+
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0.0108975, 9.49553 )
 shape = SubResource( 1 )
+
+[node name="PlayerDetection" parent="." index="3" groups=["Boss_Hurtbox"]]
 
 [node name="Sprite" type="Sprite" parent="." index="5"]
 texture = ExtResource( 1 )
