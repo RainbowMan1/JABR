@@ -17,7 +17,7 @@ area_mask = 0
 
 [node name="TransitionLayer" parent="." instance=ExtResource( 3 )]
 
-[node name="ColorRect2" type="ColorRect" parent="TransitionLayer"]
+[node name="TestSquare" type="ColorRect" parent="TransitionLayer"]
 visible = false
 margin_left = 33.0
 margin_top = 32.0

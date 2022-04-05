@@ -10,6 +10,7 @@ var levelTwo = preload("res://LevelTwo/LevelTwo.tscn").instance()
 var levelThree = preload("res://LevelThree/LevelThree.tscn").instance()
 var scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn").instance()
 var bossTitle = preload("res://transitionScreens/TitleScreen.tscn").instance()
+var gameOver = preload("res://transitionScreens/GamerOverScreen.tscn").instance()
 var gameStates = []
 var history = []
 var stateNum = 0
@@ -23,15 +24,21 @@ func _ready():
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
 	gameStates.append(mainMenu)
+	gameStates.append(gameOver)
+	#Level One
 	gameStates.append(bossTitle)
 	gameStates.append(levelOne)
 	gameStates.append(scoreScreen)
+	#Level Two
 	gameStates.append(bossTitle)
 	gameStates.append(levelTwo)
 	gameStates.append(scoreScreen)
+	#Level Three
 	gameStates.append(bossTitle)
 	gameStates.append(levelThree)
 	gameStates.append(scoreScreen)
+	
+	gameStates.append(gameOver)
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	
@@ -96,7 +103,7 @@ func _enter_state():
 		print_debug("Entering state: ", curNode.name)
 	# Give the new state a reference to it's state machine i.e. this one
 	curNode.fsm = weakref(self)
-	print_debug("fsm set")
+	#print_debug("fsm set")
 	#$TransitionLayer.set_layer(1)
 	#$TransitionLayer.transition(1)
 	get_tree().get_root().add_child(curNode)
@@ -126,6 +133,22 @@ func calcScore():
 func _process(delta):
 	if $"BackgroundMusic".playing == false:
 		$"BackgroundMusic".play()
+		
+	#if(is_instance_valid($Player)):
+		#if($Player.health <= 0):
+			#print_debug("Player is dead")
+			#MachineReset()
+
+func MachineReset():
+	#print("Reseting game... returning to main menu...")
+	print_debug("Returning to previous state: " + curNode.name)
+	get_tree().get_root().remove_child(curNode)
+	stateNum-= stateNum - 1
+	change_to(0)
+	
+	if history.size() > 0:
+		curNode = history.pop_back()
+		_enter_state()
 #
 #
 #func _physics_process(delta):
