@@ -4,13 +4,13 @@ extends Node
 #source: https://gdscript.com/solutions/godot-state-machine/
 const DEBUG = true
 
-var mainMenu = preload("res://MainMenu/mainMenu.tscn").instance()
-var levelOne = preload("res://Arena.tscn").instance()
-var levelTwo = preload("res://LevelTwo/LevelTwo.tscn").instance()
-var levelThree = preload("res://LevelThree/LevelThree.tscn").instance()
-var scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn").instance()
-var bossTitle = preload("res://transitionScreens/TitleScreen.tscn").instance()
-var gameOver = preload("res://transitionScreens/GamerOverScreen.tscn").instance()
+var mainMenu = preload("res://MainMenu/mainMenu.tscn")
+var levelOne = preload("res://Arena.tscn")
+var levelTwo = preload("res://LevelTwo/LevelTwo.tscn")
+var levelThree = preload("res://LevelThree/LevelThree.tscn")
+var scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn")
+var bossTitle = preload("res://transitionScreens/TitleScreen.tscn")
+var gameOver = preload("res://transitionScreens/GamerOverScreen.tscn")
 var gameStates = []
 var history = []
 var stateNum = 0
@@ -23,19 +23,19 @@ func _ready():
 	print_debug("Getting machine ready")
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
-	gameStates.append(mainMenu)
+	gameStates.append(mainMenu.instance())
 	#Level One
-	gameStates.append(bossTitle)
-	gameStates.append(levelOne)
-	gameStates.append(scoreScreen)
+	gameStates.append(bossTitle.instance())
+	gameStates.append(levelOne.instance())
+	gameStates.append(scoreScreen.instance())
 	#Level Two
-	gameStates.append(bossTitle)
-	gameStates.append(levelTwo)
-	gameStates.append(scoreScreen)
+	gameStates.append(bossTitle.instance())
+	gameStates.append(levelTwo.instance())
+	gameStates.append(scoreScreen.instance())
 	#Level Three
-	gameStates.append(bossTitle)
-	gameStates.append(levelThree)
-	gameStates.append(scoreScreen)
+	gameStates.append(bossTitle.instance())
+	gameStates.append(levelThree.instance())
+	gameStates.append(scoreScreen.instance())
 	
 	gameStates.append(gameOver)
 	curNode = gameStates[0]
@@ -46,14 +46,14 @@ func _ready():
 	yield(get_tree().create_timer(0.5), "timeout")
 	#$TransitionLayer.set_layer(-1)
 	# Allow for all nodes to be ready before calling _enter_state
-	
+	connect("tree_exiting", self, "MachineReset")
 	call_deferred("_enter_state")
 
 
 func change_to(Num):
 	
 	history.append(curNode)
-	curNode = gameStates[Num]
+	curNode = gameStates[Num].instance()
 	print_debug("Changing scene to: " + curNode.name)
 	if(curNode.name == "TitleScreen"):
 		
@@ -144,9 +144,29 @@ func MachineReset():
 	
 	#stateNum-= stateNum - 1
 	#change_to(0)
+	get_tree().get_root().remove_child(curNode)
 	if history.size() > 0:
 		history.clear()
+		
+		gameStates.clear()
+		# Set the initial state to the first child node
+		gameStates.append(mainMenu.instance())
+		#Level One
+		gameStates.append(bossTitle.instance())
+		gameStates.append(levelOne.instance())
+		gameStates.append(scoreScreen.instance())
+		#Level Two
+		gameStates.append(bossTitle.instance())
+		gameStates.append(levelTwo.instance())
+		gameStates.append(scoreScreen.instance())
+		#Level Three
+		gameStates.append(bossTitle.instance())
+		gameStates.append(levelThree.instance())
+		gameStates.append(scoreScreen.instance())
+		
+		gameStates.append(gameOver)
 		curNode = gameStates[0]
+		
 		_enter_state()
 #
 #
