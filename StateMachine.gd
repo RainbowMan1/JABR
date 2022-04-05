@@ -24,7 +24,6 @@ func _ready():
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
 	gameStates.append(mainMenu)
-	gameStates.append(gameOver)
 	#Level One
 	gameStates.append(bossTitle)
 	gameStates.append(levelOne)
@@ -142,12 +141,12 @@ func _process(delta):
 func MachineReset():
 	#print("Reseting game... returning to main menu...")
 	print_debug("Returning to previous state: " + curNode.name)
-	get_tree().get_root().remove_child(curNode)
-	stateNum-= stateNum - 1
-	change_to(0)
 	
+	#stateNum-= stateNum - 1
+	#change_to(0)
 	if history.size() > 0:
-		curNode = history.pop_back()
+		history.clear()
+		curNode = gameStates[0]
 		_enter_state()
 #
 #
