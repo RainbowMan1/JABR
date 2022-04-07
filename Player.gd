@@ -7,6 +7,7 @@ const COOLDOWN_WAIT_TIME = .5
 var health = 100
 var damage = 10
 var speed = 100
+var facing_direction = 0
 
 var block = false
 var dodge = false
@@ -28,6 +29,8 @@ func _physics_process(delta):#physics process of every second
 	#handling diagonal movement 
 	if (abs(direction.x) == 1 and abs(direction.y) == 1):
 		direction = direction.normalized()
+	
+	$PlayerSprite.look_at(get_global_mouse_position())
 	
 	var movement = speed * direction * delta
 	move_and_collide(movement)
@@ -72,7 +75,7 @@ func shoot():
 	get_parent().add_child(b)
 	print(b.name)
 	b.direction = (get_global_mouse_position() - position).normalized()
-	b.transform = $ProjectileLauncher.global_transform #shoots the projectile from the position of Projectile Launcher
+	b.transform = $PlayerSprite/ProjectileLauncher.global_transform #shoots the projectile from the position of Projectile Launcher
 
 func setTimer(spawn_func, spawn_time) -> Timer:
 	#creates a timer based on the function given in the first parameter and time given in second parameter
@@ -96,6 +99,7 @@ func _on_PlayerHurtBox_area_entered(area):
 
 func poisoned():
 	health-= 1
-
+	$HealthBar.value = health
+	
 func die():
 	queue_free()

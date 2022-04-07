@@ -7,10 +7,13 @@ extends KinematicBody2D
 var health = 100
 var max_health = 100
 var target = null
-var projectile = preload("res://Projectile/Projectile.tscn")
+#var projectile = preload("res://Projectile/Projectile.tscn")
+var projectile
 onready var shootTimer = get_node("Shoot_Timer")
 # Called when the node enters the scene tree for the first time.
+	
 func _ready():
+	projectile = preload("res://Projectile/Projectile.tscn")
 	if get_parent().name == "Arena":
 		self.get_parent().updateGameState()
 	print("Boss starts with ", health, " health")
@@ -44,7 +47,7 @@ func shoot():
 		add_child(proj)
 
 func _on_PlayerDetection_body_entered(body):
-	if (body.name == "PlayerBase"):
+	if (body.is_in_group("PlayerBase")):
 		target = body
 
 func _on_Shoot_Timer_timeout():
