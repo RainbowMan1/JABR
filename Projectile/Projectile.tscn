@@ -57,7 +57,6 @@ polygon = PoolVector2Array( -8, 0, 0, 8, 8, 0, 0, -8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 7
 playing = true
 
 [connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
