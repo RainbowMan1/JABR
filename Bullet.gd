@@ -19,4 +19,4 @@ func _on_Bullet_area_entered(area):#what happens when the bullet enters an area
 func _on_Bullet_body_entered(body):#what happens when a bullet hits the body
 	if body.name == "Player":
 		return
-	direction = Vector2.ZERO
+	#direction = Vector2.ZERO
