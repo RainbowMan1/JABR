@@ -64,6 +64,8 @@ func _on_PlayerBase_tree_exiting():
 	print_debug("Player Killed")
 	scoreText.text = "You Lost"
 	paused = true
+	fsm.get_ref().change_to(10)
+	
 	 # Replace with function body.
 
 

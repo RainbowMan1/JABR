@@ -102,4 +102,5 @@ func poisoned():
 	$HealthBar.value = health
 	
 func die():
+	
 	queue_free()

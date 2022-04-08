@@ -10,7 +10,7 @@ var levelTwo = preload("res://LevelTwo/LevelTwo.tscn")
 var levelThree = preload("res://LevelThree/LevelThree.tscn")
 var scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn")
 var bossTitle = preload("res://transitionScreens/TitleScreen.tscn")
-var gameOver = preload("res://transitionScreens/GamerOverScreen.tscn")
+var gameOver = preload("res://transitionScreens/GameOverScreen.tscn")
 var gameStates = []
 var history = []
 var stateNum = 0
@@ -37,7 +37,7 @@ func _ready():
 	gameStates.append(levelThree.instance())
 	gameStates.append(scoreScreen.instance())
 	
-	gameStates.append(gameOver)
+	gameStates.append(gameOver.instance())
 	curNode = gameStates[0]
 	#state = gameStates[0]
 	
@@ -54,6 +54,7 @@ func change_to(Num):
 	
 	history.append(curNode)
 	curNode = gameStates[Num]
+	#stateNum = Num
 	print_debug("Changing scene to: " + curNode.name)
 	if(curNode.name == "TitleScreen"):
 		
@@ -91,8 +92,12 @@ func next():
 	
 	print_debug("Returning to next state: " + curNode.name)
 	get_tree().get_root().remove_child(curNode)
+	#curNode.free()
 	stateNum +=1
-	
+	#if(stateNum >= 11):
+		#stateNum = 1
+		#change_to(stateNum)
+	#else:
 	change_to(stateNum)
 
 
@@ -148,6 +153,13 @@ func MachineReset():
 	if history.size() > 0:
 		history.clear()
 		
+		mainMenu = preload("res://MainMenu/mainMenu.tscn")
+		levelOne = preload("res://Arena.tscn")
+		levelTwo = preload("res://LevelTwo/LevelTwo.tscn")
+		levelThree = preload("res://LevelThree/LevelThree.tscn")
+		scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn")
+		bossTitle = preload("res://transitionScreens/TitleScreen.tscn")
+		gameOver = preload("res://transitionScreens/GameOverScreen.tscn")
 		gameStates.clear()
 		# Set the initial state to the first child node
 		gameStates.append(mainMenu.instance())
@@ -164,9 +176,10 @@ func MachineReset():
 		gameStates.append(levelThree.instance())
 		gameStates.append(scoreScreen.instance())
 		
-		gameStates.append(gameOver)
+		gameStates.append(gameOver.instance())
 		curNode = gameStates[0]
-		
+		stateNum = 0
+		bossNum = 0
 		_enter_state()
 #
 #
