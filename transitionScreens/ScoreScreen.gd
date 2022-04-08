@@ -16,8 +16,8 @@ var score
 func _ready():
 	print_debug("fsm name: " + fsm.get_ref().name)
 	if(is_instance_valid(fsm)):
-		ScoreLabel.text = "Score: " + str(fsm.get_ref().calcScore())
-		TimeLabel.text = "Time: " + str(fsm.get_ref().levelTime)
+		ScoreLabel.text = "Score: " + str(int(fsm.get_ref().lastLevelScore)*100)
+		TimeLabel.text = "Time: " + str(int(fsm.get_ref().lastLevelTime))+ " seconds"
 	else: 
 		print_debug("State Machine not found")
 		ScoreLabel.text = "Score: 0"

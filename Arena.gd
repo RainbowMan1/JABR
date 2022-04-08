@@ -4,9 +4,6 @@ var fsm: WeakRef
 var clock = 0 
 var time_multi = 1.0 
 var paused = false
-onready var clockText = get_node("ClockText")
-onready var scoreText = get_node("Score")
-onready var playerHealth = get_node("PlayerBase").health
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -15,9 +12,6 @@ onready var playerHealth = get_node("PlayerBase").health
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	clockText.add_color_override("font_color", Color(255, 0, 0, 1))
-	scoreText.add_color_override("font_color", Color(255, 0, 0, 1))
-	set_process(true)
 	pass # Replace with function body.
 
 func updateBossHealth(val):
@@ -31,8 +25,6 @@ func updateGameState():
 func _process(delta):
 	#Updates clock text every second
 	clock += delta * time_multi 
-	if not paused:
-		clockText.text = "Time: " + str(int(clock)) + "sec" 
 	#print_debug("boss health" + str(bossHealth))
 	#print(self.get_child(2))
 	
@@ -44,7 +36,6 @@ func _process(delta):
 
 func _on_Boss_tree_exiting():
 	print_debug("Boss Defeated")
-	scoreText.text = "Score: " + str(playerHealth/clock)
 	paused = true
 	pass # Replace with function body.
 
@@ -62,11 +53,10 @@ func _on_Boss2_tree_exiting():
 
 func _on_PlayerBase_tree_exiting():
 	print_debug("Player Killed")
-	scoreText.text = "You Lost"
 	paused = true
 	 # Replace with function body.
 
 
 func _on_Boss2_tree_exited():
-	fsm.get_ref().scoreData(clock, playerHealth)
+	fsm.get_ref().scoreData(clock, get_node("PlayerBase").health)
 	fsm.get_ref().next() # Replace with function body.

@@ -15,9 +15,13 @@ var gameStates = []
 var history = []
 var stateNum = 0
 var playerHealth =  0
-var levelTime = 0
 var bossNum = 0
 var curNode: Object
+
+var levelScores = []
+var levelTime = []
+var lastLevelScore
+var lastLevelTime
 
 func _ready():
 	print_debug("Getting machine ready")
@@ -118,12 +122,15 @@ func updateGameState():
 
 func scoreData(time, health): 
 	playerHealth = health
-	levelTime = time
+	lastLevelScore = calcScore(health, time)
+	levelScores.append(calcScore(health, time))
+	lastLevelTime = time
+	levelTime.append(lastLevelTime)
 	
 	
-func calcScore():
-	if(levelTime > 0):
-		return playerHealth/levelTime
+func calcScore(health, lvltime):
+	if(lvltime > 0):
+		return health/lvltime
 	else:
 		print_debug("Level has not time")
 		return 0
@@ -166,6 +173,8 @@ func MachineReset():
 		
 		gameStates.append(gameOver)
 		curNode = gameStates[0]
+		levelScores = []
+		levelTime = []
 		
 		_enter_state()
 #
