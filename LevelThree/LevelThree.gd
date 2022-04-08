@@ -5,6 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var fsm: WeakRef
+var clock = 0 
+var time_multi = 1.0 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,9 +15,11 @@ func _ready():
 func updateBossHealth(val):
 	$BossHealthBar.value = val
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	clock += delta * time_multi 
 #	pass
 
 
 func _on_Fly_Trap_tree_exited():
+	fsm.get_ref().scoreData(clock, get_node("PlayerBase").health)
 	fsm.get_ref().next()
