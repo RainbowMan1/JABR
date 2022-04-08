@@ -173,6 +173,8 @@ func MachineReset():
 		
 		gameStates.append(gameOver)
 		curNode = gameStates[0]
+		levelScores = []
+		levelTime = []
 		
 		_enter_state()
 #
