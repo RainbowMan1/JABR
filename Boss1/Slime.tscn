@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Boss.gd" type="Script" id=1]
 [ext_resource path="res://Boss1/Slime_JABR.png" type="Texture" id=2]
+[ext_resource path="res://boss_cry.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 17, 15.9911 )
@@ -37,6 +38,10 @@ autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Boss_cry" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
