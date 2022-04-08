@@ -30,6 +30,7 @@ func _on_Area2D_area_entered(area):
 	#print(get_tree().get_nodes_in_group("player_attack"))
 	if(area.is_in_group("player_attack")):
 		health -= area.damage
+		$Boss_cry.play(0.0)
 		print("Boss has ", health, " health")
 	self.get_parent().updateBossHealth(health)
 
