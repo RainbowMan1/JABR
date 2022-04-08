@@ -13,9 +13,9 @@ func _ready():
 	if get_parent().name == "Arena":
 		self.get_parent().updateGameState()
 	print("Boss starts with ", health, " health")
-	shootTimer.set_wait_time(2)
+	shootTimer.set_wait_time(.5)
 	shootTimer.start()
-	setTimer("teleport",10)
+	setTimer("teleport",1.25)
 
 func _physics_process(delta):
 	
@@ -35,6 +35,7 @@ func setTimer(spawn_func, spawn_time) -> Timer:
 func _on_Area2D_area_entered(area):
 	#print(get_tree().get_nodes_in_group("player_attack"))
 	if(area.is_in_group("player_attack")):
+		$Boss_cry.play(0.0)
 		health -= area.damage
 		print("Boss has ", health, " health")
 		if(self.get_parent().has_method("updateBossHealth")):
