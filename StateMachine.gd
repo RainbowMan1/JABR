@@ -54,7 +54,6 @@ func change_to(Num):
 	
 	history.append(curNode)
 	curNode = gameStates[Num]
-	#.instance()
 	print_debug("Changing scene to: " + curNode.name)
 	if(curNode.name == "TitleScreen"):
 		
