@@ -71,7 +71,7 @@ func change_to(Num):
 			gameStates[Num].get_node("Label").text = "Fortress"
 			print_debug("boss name set to fortress")
 		elif(bossNum == 2):
-			gameStates[Num].get_node("Label").text = "Plant"
+			gameStates[Num].get_node("Label").text = "Fly Trap"
 			print_debug("boss name set to plant")
 		bossNum += 1
 		
@@ -85,7 +85,8 @@ func change_to(Num):
 
 func back():
 	print_debug("Returning to previous state: " + curNode.name)
-	get_tree().get_root().remove_child(curNode)
+	if(is_instance_valid(curNode)):
+		get_tree().get_root().remove_child(curNode)
 	stateNum-=1
 	if history.size() > 0:
 		curNode = history.pop_back()
@@ -95,7 +96,8 @@ func next():
 	
 	
 	print_debug("Returning to next state: " + curNode.name)
-	get_tree().get_root().remove_child(curNode)
+	if(is_instance_valid(curNode)):
+		get_tree().get_root().remove_child(curNode)
 	#curNode.free()
 	stateNum +=1
 	#if(stateNum >= 11):
@@ -114,6 +116,7 @@ func _enter_state():
 	#print_debug("fsm set")
 	#$TransitionLayer.set_layer(1)
 	#$TransitionLayer.transition(1)
+	
 	get_tree().get_root().add_child(curNode)
 	if(curNode.name == "TitleScreen"):
 		curNode.endScene()
@@ -135,10 +138,17 @@ func scoreData(time, health):
 	
 func calcScore(health, lvltime):
 	if(lvltime > 0):
-		return health/lvltime
+		return (health/lvltime)*100
 	else:
-		print_debug("Level has not time")
+		print_debug("Level has no time")
 		return 0
+		
+func getScore(): 
+	if(bossNum >= 2):
+		print_debug(int(levelScores[0] + levelScores[1] + levelScores[2]))
+		return int(levelScores[0] + levelScores[1] + levelScores[2])
+	else:
+		return null
 ## Route Game Loop function calls to
 ## current state handler method if it exists
 func _process(delta):
@@ -156,17 +166,18 @@ func MachineReset():
 	
 	#stateNum-= stateNum - 1
 	#change_to(0)
-	get_tree().get_root().remove_child(curNode)
+	if(is_instance_valid(curNode)):
+		get_tree().get_root().remove_child(curNode)
 	if history.size() > 0:
 		history.clear()
 		
-		mainMenu = preload("res://MainMenu/mainMenu.tscn")
-		levelOne = preload("res://Arena.tscn")
-		levelTwo = preload("res://LevelTwo/LevelTwo.tscn")
-		levelThree = preload("res://LevelThree/LevelThree.tscn")
-		scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn")
-		bossTitle = preload("res://transitionScreens/TitleScreen.tscn")
-		gameOver = preload("res://transitionScreens/GameOverScreen.tscn")
+		mainMenu = load("res://MainMenu/mainMenu.tscn")
+		levelOne = load("res://Arena.tscn")
+		levelTwo = load("res://LevelTwo/LevelTwo.tscn")
+		levelThree = load("res://LevelThree/LevelThree.tscn")
+		scoreScreen = load("res://transitionScreens/ScoreScreen.tscn")
+		bossTitle = load("res://transitionScreens/TitleScreen.tscn")
+		gameOver = load("res://transitionScreens/GameOverScreen.tscn")
 		gameStates.clear()
 		# Set the initial state to the first child node
 		gameStates.append(mainMenu.instance())
