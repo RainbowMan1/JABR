@@ -55,5 +55,5 @@ scale = Vector2( 1, 5.5 )
 
 [connection signal="tree_exited" from="Boss2" to="." method="_on_Boss2_tree_exited"]
 [connection signal="tree_exiting" from="Boss2" to="." method="_on_Boss2_tree_exiting"]
-[connection signal="tree_exiting" from="PlayerBase" to="." method="_on_PlayerBase_tree_exiting"]
+[connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
 [connection signal="tree_exiting" from="PlayerBase" to="Boss2" method="_on_PlayerBase_tree_exiting"]

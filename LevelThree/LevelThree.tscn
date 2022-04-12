@@ -45,3 +45,4 @@ rotation = 1.5708
 scale = Vector2( 1, 5.5 )
 
 [connection signal="tree_exited" from="Fly Trap" to="." method="_on_Fly_Trap_tree_exited"]
+[connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]

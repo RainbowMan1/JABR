@@ -51,14 +51,15 @@ func _on_Boss2_tree_exiting():
 	pass # Replace with function body.
 
 
-func _on_PlayerBase_tree_exiting():
+func _on_PlayerBase_tree_exited():
 	print_debug("Player Killed")
 	paused = true
-	fsm.get_ref().change_to(10)
+	fsm.get_ref().playerLost()
 	
 	 # Replace with function body.
 
 
 func _on_Boss2_tree_exited():
-	fsm.get_ref().scoreData(clock, get_node("PlayerBase").health)
-	fsm.get_ref().next() # Replace with function body.
+	if (get_node("PlayerBase") != null):
+		fsm.get_ref().scoreData(clock, get_node("PlayerBase").health)
+		fsm.get_ref().next() # Replace with function body.

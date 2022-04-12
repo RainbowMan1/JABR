@@ -61,3 +61,4 @@ rotation = 1.5708
 scale = Vector2( 1, 5.5 )
 
 [connection signal="tree_exited" from="Boss" to="." method="_on_Boss_tree_exited"]
+[connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]

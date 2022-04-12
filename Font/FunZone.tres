@@ -3,6 +3,6 @@
 [ext_resource path="res://Font/FunZone.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 40
+size = 30
 extra_spacing_char = 12
 font_data = ExtResource( 1 )

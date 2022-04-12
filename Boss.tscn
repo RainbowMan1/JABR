@@ -22,7 +22,6 @@ polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" groups=["Boss_Hurtbox"]]
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]

@@ -16,6 +16,7 @@ var history = []
 var stateNum = 0
 var playerHealth =  0
 var bossNum = 0
+var playerLost = false
 var curNode: Object
 
 var levelScores = []
@@ -53,6 +54,11 @@ func _ready():
 	connect("tree_exiting", self, "MachineReset")
 	call_deferred("_enter_state")
 
+func playerLost():
+	playerLost = true
+	if(is_instance_valid(curNode)):
+		get_tree().get_root().remove_child(curNode)
+	change_to(gameStates.size()-1)
 
 func change_to(Num):
 	
@@ -144,11 +150,11 @@ func calcScore(health, lvltime):
 		return 0
 		
 func getScore(): 
-	if(bossNum >= 2):
-		print_debug(int(levelScores[0] + levelScores[1] + levelScores[2]))
-		return int(levelScores[0] + levelScores[1] + levelScores[2])
-	else:
-		return null
+	var total = 0
+	print(levelScores)
+	for i in levelScores:
+		total += i
+	return total
 ## Route Game Loop function calls to
 ## current state handler method if it exists
 func _process(delta):
@@ -200,6 +206,7 @@ func MachineReset():
 		bossNum = 0
 		levelScores = []
 		levelTime = []
+		playerLost = false
 		
 		_enter_state()
 #

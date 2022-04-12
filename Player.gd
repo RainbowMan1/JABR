@@ -69,7 +69,6 @@ func dodge():#has the player dodge
 		dodge = false
 
 func shoot():
-	$shoot.play()
 	var b = bullet.instance()
 	b.Player = self
 	b.damage = damage
@@ -103,5 +102,4 @@ func poisoned():
 	$HealthBar.value = health
 	
 func die():
-	
 	queue_free()

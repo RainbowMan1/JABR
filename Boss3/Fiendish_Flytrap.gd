@@ -44,7 +44,7 @@ func _on_Area2D_area_entered(area):
 func shoot():
 	if (target != null):
 		var proj = projectile.instance()
-		var target_direction_x = target.position.x-position.x
+		var dtarget_direcation_x = target.position.x-position.x
 		var target_direction_y = target.position.y-position.y
 		#print(target.position.x, ", ", target.position.y)
 		proj.direction = target.position - position

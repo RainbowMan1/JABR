@@ -10,9 +10,9 @@ var fsm: WeakRef
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(fsm.get_ref().bossNum >= 2):
-		$Score.text = "Score: " + str(Score)
-	pass # Replace with function body.
+	if fsm.get_ref().playerLost:
+		$GameOverLabel.text = "You Lost"
+	$Score.text = "Score: " + str(int(Score))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
