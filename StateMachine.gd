@@ -11,6 +11,7 @@ var levelThree = preload("res://LevelThree/LevelThree.tscn")
 var scoreScreen = preload("res://transitionScreens/ScoreScreen.tscn")
 var bossTitle = preload("res://transitionScreens/TitleScreen.tscn")
 var gameOver = preload("res://transitionScreens/GameOverScreen.tscn")
+var controlScreen = preload("res://transitionScreens/ControlsScreen.tscn")
 var gameStates = []
 var history = []
 var stateNum = 0
@@ -29,6 +30,7 @@ func _ready():
 	#gameStates.append(preload("res://State1.tscn"))
 	# Set the initial state to the first child node
 	gameStates.append(mainMenu.instance())
+	gameStates.append(controlScreen.instance())
 	#Level One
 	gameStates.append(bossTitle.instance())
 	gameStates.append(levelOne.instance())
@@ -106,7 +108,7 @@ func next():
 		get_tree().get_root().remove_child(curNode)
 	#curNode.free()
 	stateNum +=1
-	#if(stateNum >= 11):
+	#if(stateNum >= 11):z
 		#stateNum = 1
 		#change_to(stateNum)
 	#else:
@@ -187,6 +189,7 @@ func MachineReset():
 		gameStates.clear()
 		# Set the initial state to the first child node
 		gameStates.append(mainMenu.instance())
+		gameStates.append(controlScreen.instance())
 		#Level One
 		gameStates.append(bossTitle.instance())
 		gameStates.append(levelOne.instance())
