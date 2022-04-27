@@ -16,4 +16,10 @@ func _ready():
 #	pass
 
 func _on_Button_pressed():
+	save_data_not_show($"CheckBox".is_pressed())
 	fsm.get_ref().next()
+
+func	 save_data_not_show(isShow):
+	var save_game = File.new()
+	save_game.open("user://savestore.save", File.WRITE)
+	save_game.store_line(to_json({"showTutorial": !isShow}))
