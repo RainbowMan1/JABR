@@ -41,16 +41,20 @@ func _physics_process(delta):#physics process of every second
 			dodge()
 	else:
 		block_cooldown -= delta
-	if(Input.get_action_strength("shoot")):
+	
+	if(Input.get_action_strength("shoot")): #SHOOTING LOGIC
 		if(atk_cooldown <= 0):
 			shoot()
 			atk_cooldown = COOLDOWN_WAIT_TIME
-		else:
-			atk_cooldown -= delta
+	atk_cooldown -= delta
+	
 	if(poisoned):
-		setTimer("poisoned", 2)
-		poisoned = false
-		print("Health is", health)
+		$poison_text.show()
+		#setTimer("poisoned", 1)
+		#poisoned = false
+		#print("Health is", health)
+	else:
+		$poison_text.hide()
 
 func block():#has the player block
 	if(block_cooldown):
@@ -69,6 +73,7 @@ func dodge():#has the player dodge
 		dodge = false
 
 func shoot():
+	$shoot.play()
 	var b = bullet.instance()
 	b.Player = self
 	b.damage = damage
@@ -82,6 +87,7 @@ func setTimer(spawn_func, spawn_time) -> Timer:
 	var timer = Timer.new()
 	add_child (timer)
 	timer.set_wait_time(spawn_time)
+	timer.one_shot = true
 	timer.connect("timeout", self, spawn_func) 
 	timer.start()
 	return timer
@@ -92,14 +98,32 @@ func _on_PlayerHurtBox_area_entered(area):
 	else:
 		if(area.is_in_group("boss_attack")):
 			health -= area.damage
+			$scream.play()
 			$HealthBar.value = health
 		if(area.is_in_group("poison_projectile")):
 			poisoned = true
+			setTimer("poisoned", 1)
+			#poisoned = false
+			print("Health is", health)
 			print("poisoned is", poisoned)
+			$poisontimer.start()
 
 func poisoned():
-	health-= 1
+	if (health - 4 <= 0):
+		health = 1
+	else:
+		health-= 4
 	$HealthBar.value = health
+	if(poisoned):
+		setTimer("poisoned", 1)
+		pass
+	
+func cure():
+	poisoned = false
 	
 func die():
 	queue_free()
+
+
+func _on_poisontimer_timeout():
+	cure() # Replace with function body.

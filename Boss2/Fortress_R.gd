@@ -18,7 +18,7 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("player_attack")):
 		health -= area.damage
 		$TowerHealth.value = health
-		print("Boss has ", health, " healthR")
+		#print("Boss has ", health, " healthR")
 
 func die():
 	for i in self.get_children():

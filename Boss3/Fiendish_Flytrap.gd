@@ -47,8 +47,9 @@ func shoot():
 		var dtarget_direcation_x = target.position.x-position.x
 		var target_direction_y = target.position.y-position.y
 		#print(target.position.x, ", ", target.position.y)
+		get_parent().add_child(proj)
 		proj.direction = target.position - position
-		add_child(proj)
+		proj.transform = $'Sprite'.global_transform
 
 func _on_PlayerDetection_body_entered(body):
 	if (body.name == "PlayerBase"):
@@ -63,6 +64,6 @@ func _on_PlayerBase_tree_exiting():
 func teleport():#teleports the flytrap around the axis of the map e.x. (1,1) -> (-1,1)
 	print(get_viewport().size.x)
 	print(get_viewport().size.y)
-	global_position.x = (randi() % int(get_viewport().size.x/8))
+	global_position.x = (randi() % int(get_viewport().size.x/8))	
 	global_position.y = (randi() % int(get_viewport().size.y/8))
 	print("new ", position)
