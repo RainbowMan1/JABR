@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MainMenu/mainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Font/EvilEmpire.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/mousedown.png" type="Texture" id=3]
 [ext_resource path="res://Font/FunZone.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Assets/WASD.png" type="Texture" id=5]
 [ext_resource path="res://Font/zerovelo2.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Theme" id=3]
@@ -37,6 +35,9 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 302, 38 )
 theme = SubResource( 3 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button Container" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -78,61 +79,27 @@ __meta__ = {
 }
 
 [node name="Title" type="RichTextLabel" parent="Titles"]
-margin_top = 8.0
-margin_right = 154.0
-margin_bottom = 52.0
+margin_left = 20.0
+margin_top = 16.0
+margin_right = 134.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 44 )
 rect_pivot_offset = Vector2( -2, -13 )
 theme = SubResource( 6 )
-text = "JABR"
+text = " JABR"
 
 [node name="Subtitle" type="RichTextLabel" parent="Titles"]
+margin_left = 18.0
 margin_top = 56.0
-margin_right = 154.0
+margin_right = 172.0
 margin_bottom = 71.0
 rect_min_size = Vector2( 40, 15 )
 rect_pivot_offset = Vector2( -2, -13 )
 theme = SubResource( 5 )
-text = "Just Another Boss Rush"
+text = "     Just Another Boss Rush"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Wasd" type="Sprite" parent="."]
-position = Vector2( 255, 11 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
-
-[node name="Movement" type="RichTextLabel" parent="."]
-margin_left = 270.0
-margin_top = 8.0
-margin_right = 329.0
-margin_bottom = 23.0
-rect_min_size = Vector2( 40, 15 )
-rect_pivot_offset = Vector2( -2, -13 )
-theme = SubResource( 5 )
-text = "Movement"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AimnShoot" type="RichTextLabel" parent="."]
-margin_left = 269.0
-margin_top = 31.0
-margin_right = 328.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 40, 15 )
-rect_pivot_offset = Vector2( -2, -13 )
-theme = SubResource( 5 )
-text = "Aim, Shoot"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mousedown" type="Sprite" parent="."]
-position = Vector2( 254, 34 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 3 )
 
 [connection signal="pressed" from="Button Container/Play Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="Button Container/Quit Button" to="." method="_on_Quit_Button_pressed"]

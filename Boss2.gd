@@ -10,6 +10,7 @@ var target = null
 #var projectile = preload("res://Projectile/Projectile.tscn")
 var projectile
 onready var shootTimer = get_node("Shoot_Timer")
+var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 	
 func _ready():
@@ -41,6 +42,9 @@ func _on_Area2D_area_entered(area):
 func shoot():
 	if (target != null):
 		var proj = projectile.instance()
+		rng.randomize()
+		var scaler = rng.randf_range(0.5, 1.5)
+		proj.scale = Vector2(scaler, scaler)
 		var target_direction_x = target.position.x-position.x
 		var target_direction_y = target.position.y-position.y
 		#print(target.position.x, ", ", target.position.y)

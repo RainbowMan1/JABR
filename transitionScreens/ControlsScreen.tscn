@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://transitionScreens/ControlsScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/WASD.png" type="Texture" id=2]
+[ext_resource path="res://Assets/mouseclick.png" type="Texture" id=3]
+[ext_resource path="res://Assets/mousemove.png" type="Texture" id=4]
+[ext_resource path="res://checkboxtheme.tres" type="Theme" id=5]
+
+[node name="ControlScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 322.0
+margin_bottom = 182.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Movement" type="Label" parent="."]
+margin_left = 51.0758
+margin_top = 25.25
+margin_right = 310.076
+margin_bottom = 56.25
+text = "WASD (or arrow keys) to move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseMove" type="Label" parent="."]
+margin_left = 49.0758
+margin_top = 62.25
+margin_right = 310.076
+margin_bottom = 93.25
+text = "Move mouse to move your cursor to aim
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseShoot" type="Label" parent="."]
+margin_left = 51.0758
+margin_top = 100.25
+margin_right = 263.076
+margin_bottom = 131.25
+text = "Left click to shoot towards cursor
+"
+
+[node name="Mouseclick" type="Sprite" parent="."]
+position = Vector2( 27.0757, 104.25 )
+scale = Vector2( 0.0286885, 0.0286885 )
+texture = ExtResource( 3 )
+
+[node name="Mousemove" type="Sprite" parent="."]
+position = Vector2( 26.0758, 68.25 )
+scale = Vector2( 0.0429687, 0.0429687 )
+texture = ExtResource( 4 )
+
+[node name="Wasd" type="Sprite" parent="."]
+position = Vector2( 27.0757, 32.25 )
+scale = Vector2( 0.80303, 0.80303 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 254.0
+margin_top = 155.0
+margin_right = 311.0
+margin_bottom = 175.0
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 183.0
+margin_top = 129.0
+margin_right = 332.0
+margin_bottom = 153.0
+rect_scale = Vector2( 0.881943, 0.829791 )
+theme = ExtResource( 5 )
+text = "Do Not Show Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]

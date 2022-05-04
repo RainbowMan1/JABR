@@ -31,5 +31,8 @@ margin_top = 151.0
 margin_right = 318.0
 margin_bottom = 178.0
 text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
