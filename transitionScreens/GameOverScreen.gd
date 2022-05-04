@@ -12,6 +12,8 @@ var fsm: WeakRef
 func _ready():
 	if fsm.get_ref().playerLost:
 		$GameOverLabel.text = "You Lost"
+	else:
+		$GameOverLabel.text = "You Win!"
 	$Score.text = "Score: " + str(int(Score))
 
 

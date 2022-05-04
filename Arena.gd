@@ -4,6 +4,7 @@ var fsm: WeakRef
 var clock = 0 
 var time_multi = 1.0 
 var paused = false
+var killed = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -52,9 +53,9 @@ func _on_Boss2_tree_exiting():
 
 
 func _on_PlayerBase_tree_exited():
-	print_debug("Player Killed")
-	paused = true
-	fsm.get_ref().playerLost()
+	if(killed):
+		print_debug("Player Killed")
+		fsm.get_ref().playerLost()
 	
 	 # Replace with function body.
 

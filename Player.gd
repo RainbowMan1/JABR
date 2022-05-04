@@ -14,6 +14,7 @@ var dodge = false
 var block_cooldown = 5
 var atk_cooldown = 0
 var poisoned = false
+var killed = false
 
 var bullet = preload("res://Bullet.tscn")
 
@@ -122,6 +123,7 @@ func cure():
 	poisoned = false
 	
 func die():
+	get_parent().killed = true
 	queue_free()
 
 

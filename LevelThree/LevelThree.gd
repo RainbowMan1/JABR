@@ -6,7 +6,8 @@ extends Node2D
 # var b = "text"
 var fsm: WeakRef
 var clock = 0 
-var time_multi = 1.0 
+var time_multi = 1.0
+var killed = false 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,8 +20,10 @@ func _process(delta):
 	clock += delta * time_multi 
 #	pass
 func _on_PlayerBase_tree_exited():
-	print_debug("Player Killed")
-	fsm.get_ref().playerLost()
+	if(killed):
+		print_debug("Player Killed")
+		fsm.get_ref().playerLost()
+	print_debug("Player Lost")
 
 func _on_Fly_Trap_tree_exited():
 	if (get_node("PlayerBase") != null):
