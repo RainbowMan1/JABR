@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://JABR Player.png" type="Texture" id=1]
 [ext_resource path="res://Assets/PlayerPrototype.png" type="Texture" id=2]
@@ -6,6 +6,24 @@
 [ext_resource path="res://PlayerHurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/PlayerBullet.png" type="Texture" id=5]
 [ext_resource path="res://shoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://player_scream.wav" type="AudioStream" id=7]
+[ext_resource path="res://PoisonText.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 48, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 0, 48, 24 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.5, 6.25 )
@@ -16,11 +34,18 @@ extents = Vector2( 11.5, 6.375 )
 [node name="PlayerBase" type="KinematicBody2D" groups=["PlayerBase"]]
 script = ExtResource( 3 )
 
+[node name="poison_text" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -32 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -6.0
-margin_top = -15.0
+margin_top = -23.0
 margin_right = 224.0
-margin_bottom = 114.0
+margin_bottom = 106.0
 rect_scale = Vector2( 0.05, 0.05 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -33,7 +58,7 @@ tint_progress = Color( 0.121569, 0.729412, 0.0745098, 1 )
 texture = ExtResource( 1 )
 
 [node name="ProjectileLauncher" type="Position2D" parent="PlayerSprite"]
-position = Vector2( 10, 0 )
+position = Vector2( 10, -8 )
 scale = Vector2( 10, 10 )
 
 [node name="PlayerArrowRectangle" type="Sprite" parent="PlayerSprite"]
@@ -56,4 +81,13 @@ shape = SubResource( 2 )
 stream = ExtResource( 6 )
 volume_db = -10.0
 
+[node name="scream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="poisontimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]
+[connection signal="timeout" from="poisontimer" to="." method="_on_poisontimer_timeout"]

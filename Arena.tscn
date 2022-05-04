@@ -6,6 +6,7 @@
 [ext_resource path="res://Arena.gd" type="Script" id=4]
 [ext_resource path="res://Boss1/Slime.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Barrier.tscn" type="PackedScene" id=6]
+[ext_resource path="res://reticle.tscn" type="PackedScene" id=7]
 
 [sub_resource type="TileSet" id=1]
 
@@ -54,6 +55,8 @@ scale = Vector2( 1, 5.5 )
 position = Vector2( 153, 212 )
 rotation = 1.5708
 scale = Vector2( 1, 5.5 )
+
+[node name="reticle" parent="." instance=ExtResource( 7 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )

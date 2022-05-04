@@ -5,7 +5,9 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/PlayerBullet.png" type="Texture" id=4]
 [ext_resource path="res://Barrier.tscn" type="PackedScene" id=5]
-[ext_resource path="res://abbey_base.jpg" type="Texture" id=6]
+[ext_resource path="res://reticle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://abbey_base.jpg" type="Texture" id=7]
+
 
 [node name="LevelThree" type="Node2D"]
 script = ExtResource( 1 )
@@ -50,6 +52,8 @@ scale = Vector2( 1, 5.5 )
 position = Vector2( 153, 212 )
 rotation = 1.5708
 scale = Vector2( 1, 5.5 )
+
+[node name="reticle" parent="." instance=ExtResource( 6 )]
 
 [connection signal="tree_exited" from="Fly Trap" to="." method="_on_Fly_Trap_tree_exited"]
 [connection signal="tree_exited" from="PlayerBase" to="." method="_on_PlayerBase_tree_exited"]
